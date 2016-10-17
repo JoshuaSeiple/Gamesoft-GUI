@@ -1,43 +1,36 @@
-var lineX = 98;
-var lineY = 45;
-
-rect(125, 0, 150, 45);
-
-rect(30, 45, 340, 35);
-for( var k = 0; k < 4; k++){
-line(lineX, lineY, lineX, lineY + 35);
-lineX += 68;
-}
-
-rect(45,95, 130, 130);
-rect(45,263, 130, 130);
-rect(243,95, 130, 130);
-var scenes = [true, false];
+var scenes = [false, false];
 var currScene = 0;
+//creating scenes
 draw = function() {
-if(mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80 && scenes[0] === false){
-    background(255, 0, 0);
+    //scene #1
+    if(scenes[0] === false && currScene === 0){
+        rect(45,95, 130, 130);
+        rect(45,263, 130, 130);
+        rect(243,95, 130, 130);
+        currScene = 0;
+        scenes[0] = true;
+    }
+    //scene #2
+    else if(mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80 &&         currScene === 0){
+        background(255, 0, 0);
     
-  currScene =   
-}
-else if(mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80){
-    background(255, 0, 0);
-    
-}
+    }
+    var lineX = 98;
+    var lineY = 45;
+    //title and task bar
+    rect(125, 0, 150, 45);
+    rect(30, 45, 340, 35);
+    for( var k = 0; k < 4; k++){
+        line(lineX, lineY, lineX, lineY + 35);
+        lineX += 68;
+    }
+    textSize(23);
+    fill(136, 0, 255);
+    text("GameSoft", 150, 30);
+    textSize(18);
+    text("Home", 37, 67);
+    text("games", 105, 67);
+    text("store", 178, 67);
+    text("mods", 246, 67);
+    fill(255, 255, 255);
 };
-
-
-
-
-
-
-
-
-
-textSize(23);
-fill(136, 0, 255);
-text("GameSoft", 150, 30);
-textSize(18);
-text("games", 37, 67);
-text("store", 111, 67);
-text("mods", 178, 67);
