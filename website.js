@@ -3,7 +3,8 @@ var currScene = 0;
 //creating scenes
 draw = function() {
     //scene #1
-    if(scenes[0] === false && currScene === 0){
+    if((scenes[0] === false && currScene === 0) || (mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80)){
+        background(0, 0, 0);
         rect(45,95, 130, 130);
         rect(45,263, 130, 130);
         rect(243,95, 130, 130);
@@ -11,7 +12,7 @@ draw = function() {
         scenes[0] = true;
     }
     //scene #2
-    else if(mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80 &&         currScene === 0){
+    else if(mouseIsPressed && mouseX>30 && mouseX<166 && mouseY>45 && mouseY< 80 &&         currScene === 0){
         background(255, 0, 0);
     
     }
