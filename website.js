@@ -1,28 +1,53 @@
-var scenes = [false, false];
 var currScene = 0;
+var cart = ["new game", "even newer game"];
 //creating scenes
 draw = function(){
     //Home screen
-    if((scenes[0] === false && currScene === 0) || (mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80)){
+    if(currScene === 0 ||(mouseIsPressed && mouseX>30 && mouseX<98 && mouseY>45 && mouseY< 80)){
         background(0, 0, 0);
         rect(45,95, 130, 130);
         rect(45,263, 130, 130);
         rect(243,95, 130, 130);
         rect(243,263, 130, 130);
-        currScene = 0;
-        scenes[0] = true;
+        currScene = -1;
     }
     //Games screen
-    else if(mouseIsPressed && mouseX>30 && mouseX<166 && mouseY>45 && mouseY< 80 &&         currScene === 0){
+    //currScene = 1
+    else if(mouseIsPressed && mouseX>30 && mouseX<166 && mouseY>45 && mouseY< 80){
         background(255, 0, 0);
+        rect(255, 260, 110, 110);
+        rect(255, 260, 110, 110);
+        currScene = 1;
+        
     }
     //Store screen
-    else if(mouseIsPressed && mouseX>30 && mouseX<234 && mouseY>45 && mouseY<80 && currScene === 0){
+    //currScene = 2
+    else if(mouseIsPressed && mouseX>30 && mouseX<234 && mouseY>45 && mouseY<80){
       background(0, 175, 255);
+      rect(270, 100, 84, 30);
+      fill(255, 0, 0);
+      text("Cart", 295, 120);
+      fill(255, 255, 255);
+      
+    
+      currScene = 2;
     }
     //Mods screen
+    //currScene = 3
     else if(mouseIsPressed && mouseX>30 && mouseX<302 && mouseY>45 && mouseY<80){
         background(13, 255, 0);
+        currScene = 3;
+    }
+    //Cart screen
+    //currScene = 5
+    else if (mouseIsPressed && mouseX>270 && mouseX<354 && mouseY>100 && mouseY<130 && currScene === 2){
+       background(204, 0, 255);
+       currScene= 5;
+       for(var t = 0; t<cart.length; t++){
+           fill(0, 255, 234);
+           text(cart[t], 200, 120 + t * 50);
+           
+       }
     }
 
     var lineX = 98;
