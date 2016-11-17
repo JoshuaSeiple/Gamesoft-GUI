@@ -1,5 +1,16 @@
 var currScene = 0;
-var cart = ["new game", "even newer game"];
+var products = [];
+var cart = [];
+var createProduct =function(title, price) {
+    var product = {
+    title: title,
+    price: price
+    };
+    products.push(product);
+};
+createProduct("game", 50);
+createProduct("game2", 45);
+createProduct("game3", 60);
 //creating scenes
 draw = function(){
     //Home screen
@@ -20,6 +31,7 @@ draw = function(){
         currScene = 1;
         
     }
+
     //Store screen
     //currScene = 2
     else if(mouseIsPressed && mouseX>30 && mouseX<234 && mouseY>45 && mouseY<80){
@@ -28,10 +40,14 @@ draw = function(){
       fill(255, 0, 0);
       text("Cart", 295, 120);
       fill(255, 255, 255);
+      for ( var t = 0; t < products.length; t++){
+        text(products[t].title + " " + products[t].price, 200, 200 + t * 25);
+      }
       
-    
+
       currScene = 2;
     }
+        
     //Mods screen
     //currScene = 3
     else if(mouseIsPressed && mouseX>30 && mouseX<302 && mouseY>45 && mouseY<80){
@@ -45,7 +61,9 @@ draw = function(){
        currScene= 5;
        for(var t = 0; t<cart.length; t++){
            fill(0, 255, 234);
-           text(cart[t], 200, 120 + t * 50);
+           text(cart[t].title, 295, 120 + t * 50);
+           text(cart[t].price, 295, 150 + t * 50);
+           
            
        }
     }
