@@ -1,3 +1,4 @@
+var chooseProduct = 0;
 var currScene = 0;
 var products = [];
 var cart = [];
@@ -8,8 +9,11 @@ var createProduct =function(title, price) {
     };
     products.push(product);
 };
-createProduct("game", 50);
+//creating products
+createProduct("game1", 50);
+chooseProduct = 1;
 createProduct("game2", 45);
+chooseProduct = 2;
 createProduct("game3", 60);
 //creating scenes
 draw = function(){
@@ -34,7 +38,7 @@ draw = function(){
 
     //Store screen
     //currScene = 2
-    else if(mouseIsPressed && mouseX>30 && mouseX<234 && mouseY>45 && mouseY<80){
+    else if((mouseIsPressed && mouseX>30 && mouseX<234 && mouseY>45 && mouseY<80) || currScene === 2){
       background(0, 175, 255);
       rect(270, 100, 84, 30);
       fill(255, 0, 0);
@@ -43,8 +47,7 @@ draw = function(){
       for ( var t = 0; t < products.length; t++){
         text(products[t].title + " " + products[t].price, 200, 200 + t * 25);
       }
-      
-
+     
       currScene = 2;
     }
         
@@ -56,7 +59,7 @@ draw = function(){
     }
     //Cart screen
     //currScene = 5
-    else if (mouseIsPressed && mouseX>270 && mouseX<354 && mouseY>100 && mouseY<130 && currScene === 2){
+    if (mouseIsPressed && mouseX>270 && mouseX<354 && mouseY>100 && mouseY<130 && currScene === 2){
        background(204, 0, 255);
        currScene= 5;
        for(var t = 0; t<cart.length; t++){
@@ -66,6 +69,9 @@ draw = function(){
            
            
        }
+       
+       
+       
     }
 
     var lineX = 98;
@@ -87,4 +93,12 @@ draw = function(){
     text("store", 178, 67);
     text("mods", 246, 67);
     fill(255, 255, 255);
-        };
+    if(currScene === 2){
+        for(var t = 0; t< products.length; t++){
+         if(mouseIsPressed && mouseX > 200 && mouseX < 280 && mouseY > 190 + t*25 && mouseY < 205 + t*25){
+                cart[cart.length] = products[t];  
+            }
+        }
+        text(mouseX + "," + mouseY, 5, 380);
+    }
+};
