@@ -69,9 +69,11 @@ draw = function(){
            
            
        }
-       
-       
-       
+       var totalPrice = 0;
+       for(var t = 0; t< cart.length; t++){
+           totalPrice += cart[t].price;
+       }
+       text("total price =" + totalPrice, 110, 200);
     }
 
     var lineX = 98;
